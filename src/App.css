@@ -33,4 +33,22 @@ nav ul li{
   border-radius: 15px;
 
 }
+.book-list ul li:hover{
+  opacity:0.5;
+  text-decoration: line-through;
 
+}
+form{
+  border-radius: 20px;
+}
+form input{
+  height: 30px;
+  margin: 10px;
+
+}
+button{
+  height: 30px;
+  margin: 10px;
+  color: darkslategrey;
+  background-color: gainsboro;
+}
