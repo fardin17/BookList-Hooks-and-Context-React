@@ -5,12 +5,14 @@ import {ThemeContext} from "../contexts/ThemeContext";
 const AddBookForm = () => {
     const {islightTheme,light,dark}=useContext(ThemeContext);
     const theme=islightTheme?light:dark;
-    const {addBooks}=useContext(BookContext)
+    const {dispatch}=useContext(BookContext)
     const [title,setTitle]=useState('')
     const [author,setAuthor]=useState('')
     const submitHandler=(e)=>{
         e.preventDefault()
-        addBooks(title,author)
+        dispatch({type:'ADD_BOOK',book:{
+            title,author
+            }})
         setTitle('')
         setAuthor('')
     }
@@ -19,9 +21,9 @@ const AddBookForm = () => {
             <form onSubmit={submitHandler} style={{background:theme.bg, color:theme.syntax}}>
                 <label>Add new Book</label><br/>
                 <input style={{background:theme.ui, color:theme.syntax}}
-                    type='text' onChange={(e)=>setTitle(e.target.value)} required/><br/>
+                    type='text' placeholder='Book name' value={title}onChange={(e)=>setTitle(e.target.value)} /><br/>
                 <input style={{background:theme.ui, color:theme.syntax}}
-                    type='text' onChange={(e)=>setAuthor(e.target.value)} required/><br/>
+                    type='text' placeholder='Author name' value={author}onChange={(e)=>setAuthor(e.target.value)} /><br/>
                 <input style={{background:theme.ui, color:theme.syntax}}
                     type='submit' value='Add Now'/>
             </form>
